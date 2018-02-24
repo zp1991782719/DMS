@@ -27,7 +27,7 @@
 </head>
 <body>
 <h3>
-    <a href="${request.getContextPath() }/user/userInfo">进入用户管理页</a>
+    <a href="${request.getContextPath() }/user/userInfo">进入用户管理页-压缩</a>
 </h3>
 </body>
 </html>
