@@ -1,6 +1,7 @@
 package com.ssm.mapper;
 
 import com.ssm.model.User;
+import com.ssm.utils.PageHelp;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
  * @Date 2018/2/24 13:49
  */
 public interface UserMapper {
+
+    public String findUserByUsername(String username);
 
     void saveUser(User user);
 
@@ -19,5 +22,7 @@ public interface UserMapper {
     User findUserById(int id);
 
     List<User> findAll();
+
+    List<User> findUserList(PageHelp pageHelp);
 
 }

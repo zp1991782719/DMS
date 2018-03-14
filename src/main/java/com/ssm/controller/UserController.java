@@ -4,13 +4,19 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
+import com.ssm.utils.PageHelp;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -24,6 +30,18 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
+    @RequestMapping("/userLogin")
+    public String userLogin(String username,String password){
+        boolean login = userService.userLogin(username,password);
+        System.out.println(username+"|"+password);
+        if(login){
+            return "index";
+            //return "redirect:/user/userInfo";
+        }
+        return "error";
+    }
 
     /**
      *跳转到添加用户界面
@@ -50,7 +68,7 @@ public class UserController {
     /**
      * 修改用户
      * @param model
-     * @param request
+     * @param
      * @param user
      * @return
      */
@@ -66,7 +84,7 @@ public class UserController {
 
     /**
      * 查询所有用户
-     * @param request
+     * @param
      * @param model
      * @return
      */
@@ -80,7 +98,7 @@ public class UserController {
     /**
      * 查询单个用户
      * @param id
-     * @param request
+     * @param
      * @param model
      * @return
      */
@@ -92,8 +110,8 @@ public class UserController {
     /**
      * 根据id删除用户
      * @param id
-     * @param request
-     * @param response
+     * @param
+     * @param
      */
     @RequestMapping("/delUser")
     public String deleteUser(int id,Model model){
@@ -116,5 +134,27 @@ public class UserController {
         PageInfo page = new PageInfo(users,5);
         model.addAttribute("pageInfo", page);
         return "allUser";
+    }
+
+    @RequestMapping("getUserEtc")
+    @ResponseBody
+    public PageHelp getUserEtc(int start, int length){
+        return userService.findUserList(start,length);
+    }
+
+    @RequestMapping("delUserById")
+    @ResponseBody
+    public Map delUserById(int id){
+        System.out.println("id:"+id);
+        boolean flag = userService.deleteUser(id);
+        Map mapResult = new HashMap();
+        if(flag) {
+            mapResult.put("flag", true);
+            mapResult.put("msg", "删除成功");
+        }else{
+            mapResult.put("flag", false);
+            mapResult.put("msg", "删除失败");
+        }
+        return mapResult;
     }
 }

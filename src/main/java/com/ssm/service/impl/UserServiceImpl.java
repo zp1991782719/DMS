@@ -3,6 +3,7 @@ package com.ssm.service.impl;
 import com.ssm.mapper.UserMapper;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
+import com.ssm.utils.PageHelp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,20 @@ public class UserServiceImpl implements UserService {
      */
     @Autowired
     private UserMapper userMapper;
+
+
+    public boolean userLogin(String username, String password) {
+        if(username!=null){
+
+        }
+        String findPasswordByUsername = userMapper.findUserByUsername(username);
+        if(password!=null&&!"".equals(password)){
+            if(password.equals(findPasswordByUsername)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * 新增用户
@@ -60,6 +75,21 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         List<User> allUser = userMapper.findAll();
         return allUser;
+    }
+
+    /*
+     *  分页显示
+     *MethodParam
+     *return
+     */
+    public PageHelp findUserList(int start, int length) {
+        PageHelp pageHelp = new PageHelp();
+        pageHelp.setStart(start);
+        pageHelp.setLength(length);
+        pageHelp.setData(userMapper.findUserList(pageHelp));
+        pageHelp.setRecordsTotal(findAll().size());
+        pageHelp.setRecordsFiltered(findAll().size());
+        return pageHelp;
     }
 
 

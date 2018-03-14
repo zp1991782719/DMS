@@ -21,7 +21,7 @@
 
     <!-- 配置sprigmvc视图解析器：解析逻辑试图
          后台返回逻辑试图：index
-        视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/page/index.jsp-->
+        视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/page/index.html-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/page/"></property>
         <property name="suffix" value=".jsp"></property>

@@ -1,6 +1,7 @@
 package com.ssm.service;
 
 import com.ssm.model.User;
+import com.ssm.utils.PageHelp;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import java.util.List;
  */
 
 public interface UserService {
+
+    public boolean userLogin(String username,String password);
 
     void saveUser(User user);
 
@@ -21,4 +24,5 @@ public interface UserService {
 
     List<User> findAll();
 
+    PageHelp findUserList(int start,int length);
 }

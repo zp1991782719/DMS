@@ -6,22 +6,22 @@ package com.ssm.model;
  */
 public class User {
 
-    //主键
     private int id;
-    //用户名
+
     private String username;
-    //年龄
-    private String age;
+
+    private String password;
+
+    private String name;
 
     public User() {
-        super();
     }
 
-    public User(int id, String username, String age) {
-        super();
+    public User(int id, String username, String password, String name) {
         this.id = id;
         this.username = username;
-        this.age = age;
+        this.password = password;
+        this.name = name;
     }
 
     public int getId() {
@@ -40,12 +40,19 @@ public class User {
         this.username = username;
     }
 
-    public String getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
