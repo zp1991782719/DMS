@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>请登录</title>
-    <!-- 引入requirejs文件管理js依赖包 -->
-    <script src="static/js/require.js" data-main="static/js/lib/main.js"></script>
+
+    <link rel="stylesheet" href="static/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css"/>
 
     <style type="text/css">
         body{
@@ -25,7 +26,7 @@
 
 </head>
 <body>
-    <form action="/user/userLogin" method="post">
+    <form action="/index" method="post">
         <div class="container">
             <div class="row form" style="margin-left: 50%">
                 <div class="form-horizontal col-md-offset-3" id="login_form">

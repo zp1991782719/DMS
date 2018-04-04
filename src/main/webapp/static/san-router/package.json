@@ -1,0 +1,73 @@
+{
+  "_from": "san-router",
+  "_id": "san-router@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-QM7hRzvcCkBmvjp7HJmulD5okFzcUp9hFGAwxQRlIRrs1zsx0zWLcKyep0u2Xbi7z5uxncQ/K0H4i/e44uklSw==",
+  "_location": "/san-router",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "san-router",
+    "name": "san-router",
+    "escapedName": "san-router",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/san-router/-/san-router-1.2.0.tgz",
+  "_shasum": "6785390b4372ba4994f2987b01d7679098f2fce0",
+  "_spec": "san-router",
+  "_where": "D:\\TuTe",
+  "author": {
+    "name": "otakustay"
+  },
+  "bugs": {
+    "url": "https://github.com/ecomfe/san-router/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  },
+  "deprecated": false,
+  "description": "Router for San",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "fecs": "^1.4.1",
+    "glob": "^7.1.1",
+    "san": "^3.4.2",
+    "uglify-js": "^2.7.5",
+    "webpack": "^2.2.0-rc.3",
+    "webpack-dev-server": "^2.2.0-rc.0"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "homepage": "https://github.com/ecomfe/san-router#readme",
+  "license": "MIT",
+  "main": "dist/san-router.source.js",
+  "name": "san-router",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomfe/san-router.git"
+  },
+  "scripts": {
+    "build": "rm -rf dist && webpack && uglifyjs dist/san-router.source.js -mco dist/san-router.js",
+    "dev": "webpack-dev-server --config test/webpack.config.js --history-api-fallback --host 0.0.0.0 --port 8384",
+    "lint": "fecs ./src",
+    "test": "npm run dev && open http://0.0.0.0:8384/test/"
+  },
+  "unpkg": "dist/san-router",
+  "version": "1.2.0"
+}

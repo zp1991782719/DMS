@@ -23,8 +23,8 @@
          后台返回逻辑试图：index
         视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/page/index.html-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/page/"></property>
-        <property name="suffix" value=".jsp"></property>
+        <property name="prefix" value="/static/page/"></property>
+        <property name="suffix" value=".html"></property>
     </bean>
 
     <!--1： mvc:annotation-driven默认创建了 RequestMappingHandlerMapping和  RequestMappingHandlerAdapter对象
