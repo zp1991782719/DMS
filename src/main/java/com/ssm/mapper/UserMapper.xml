@@ -8,7 +8,17 @@
 <mapper namespace="com.ssm.mapper.UserMapper">
 
     <select id="findUserByUsername" parameterType="String" resultType="com.ssm.pojo.User">
-         select user_id id,user_username username,user_password password,user_name name from dms_user where user_username=#{username}
+         select user_id id,user_username username,user_password password,user_name name from dms_user
+         where user_username=#{username}
+    </select>
+
+    <select id="findAll" resultType="com.ssm.pojo.User">
+        select user_id id,user_username username,user_password password,user_name name from dms_user
+    </select>
+
+    <select id="findPageAll" parameterType="com.ssm.utils.PageHelp" resultType="com.ssm.pojo.User">
+        select user_id id,user_username username,user_password password,user_name name from dms_user
+        limit #{start},#{length}
     </select>
 
 </mapper>

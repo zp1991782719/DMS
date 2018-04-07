@@ -31,22 +31,28 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    /**
+     *
+     * @return 所有用户
+     */
+    public List<User> findAll(){
+        return userMapper.findAll();
+    }
 
-    /*
-     *  分页显示
+   /**  分页显示
      *MethodParam
      *return
-
-    public PageHelp findUserList(int start, int length) {
+    */
+    public PageHelp findPageAll(int draw,int start, int length) {
         PageHelp pageHelp = new PageHelp();
+        pageHelp.setDraw(draw);
         pageHelp.setStart(start);
         pageHelp.setLength(length);
-        pageHelp.setData(userMapper.findUserList(pageHelp));
-        pageHelp.setRecordsTotal(findAll().size());
-        pageHelp.setRecordsFiltered(findAll().size());
+        pageHelp.setData(userMapper.findPageAll(pageHelp));
+        pageHelp.setRecordsTotal(userMapper.findAll().size());
+        pageHelp.setRecordsFiltered(userMapper.findAll().size());
         return pageHelp;
     }
-    */
 
 
 }

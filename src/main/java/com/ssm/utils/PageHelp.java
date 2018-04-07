@@ -20,6 +20,8 @@ public class PageHelp {
 
     private List data;
 
+    private List<String> search;
+
 
     public int getStart() {
         return start;
@@ -67,5 +69,13 @@ public class PageHelp {
 
     public void setData(List data) {
         this.data = data;
+    }
+
+    public List<String> getSearch() {
+        return search;
+    }
+
+    public void setSearch(List<String> search) {
+        this.search = search;
     }
 }

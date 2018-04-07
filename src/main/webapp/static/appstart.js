@@ -7,6 +7,7 @@ define(function (require) {
     require('css!adminlte-skin-css');
 
     require('jquery');
+    require('bootstrap');
     require('adminlte');
 
     var san = require("san");
@@ -15,7 +16,7 @@ define(function (require) {
     var Link = sanRouter.Link;
     var router = sanRouter.router;
 
-    var template = require("text!./page/san_test.html");
+    var template = require("text!./page/index.html");
 
     var App = new san.defineComponent({
         template: '<div class="wrapper">\n' +
@@ -49,7 +50,7 @@ define(function (require) {
         '                                    <li><!-- start message -->\n' +
         '                                        <a href="#">\n' +
         '                                            <div class="pull-left">\n' +
-        '                                                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">\n' +
+        '                                                <img src="/static/AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">\n' +
         '                                            </div>\n' +
         '                                            <h4>\n' +
         '                                                Sender Name\n' +
@@ -168,14 +169,14 @@ define(function (require) {
         '            <ul class="sidebar-menu" data-widget="tree">\n' +
         '                <li class="header">主菜单</li>\n' +
         '                <li class="active treeview">\n' +
-        '                    <router-link href="#">\n' +
+        '                    <a href="#">\n' +
         '                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>\n' +
         '                        <span class="pull-right-container">\n' +
         '                  <i class="fa fa-angle-left pull-right"></i>\n' +
         '                </span>\n' +
-        '                    </router-link>\n' +
+        '                    </a>\n' +
         '                    <ul class="treeview-menu">\n' +
-        '                        <li class="active"><router-link to="/userList"><i class="fa fa-circle-o"></i>userList</router-link></li>\n' +
+        '                        <li><router-link to="/user/userList"><i class="fa fa-circle-o"></i>用户列表</router-link></li>\n' +
         '                        <li><router-link to="/about"><i class="fa fa-circle-o"></i>about</router-link></li>\n' +
         '                    </ul>\n' +
         '                </li>\n' +
@@ -197,19 +198,20 @@ define(function (require) {
         }
     });
     new App().attach(document.body);
-    var userList = require('./page/userList');
-    var about = require('./page/about');
 
-    router.add({rule: '/userList', Component: userList, target: '#main'});
-    router.add({rule: '/about', Component: about, target: '#main'});
+    //添加路由
+    var userList = require('./page/user/userList');
+    var userEdit = require('./page/user/userEdit');
+    router.add({rule: '/user/userList', Component: userList, target: '#main'});
+    router.add({rule: '/user/userEdit', Component: userEdit, target: '#main'});
 
     // 设置路由模式 'html5 | hash'
-    router.setMode('html5');
+    router.setMode('hash');
     // 路由监听
      router.listen(function(e, config){
         // 在路由发生变化时触发
-        console.log(e);
-        console.log(config);
+        // console.log(e);
+        // console.log(config);
     });
     router.start();
 

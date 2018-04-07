@@ -14,4 +14,8 @@ public interface UserService {
 
     public boolean userLogin(String username,String password);
 
+    public List<User> findAll();
+
+    public PageHelp findPageAll(int draw,int start,int length);
+
 }

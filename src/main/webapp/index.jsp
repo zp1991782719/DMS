@@ -26,7 +26,7 @@
 
 </head>
 <body>
-    <form action="/index" method="post">
+    <form action="/index" method="get">
         <div class="container">
             <div class="row form" style="margin-left: 50%">
                 <div class="form-horizontal col-md-offset-3" id="login_form">

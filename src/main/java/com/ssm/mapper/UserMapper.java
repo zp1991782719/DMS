@@ -13,4 +13,8 @@ public interface UserMapper {
 
     public User findUserByUsername(String username);
 
+    public List<User> findAll();
+
+    public List<User> findPageAll(PageHelp pageHelp);
+
 }

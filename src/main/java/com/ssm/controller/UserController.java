@@ -1,37 +1,51 @@
 package com.ssm.controller;
 
+import com.ssm.pojo.User;
 import com.ssm.service.UserService;
-
+import com.ssm.utils.PageHelp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * 描述:用户controller<BR>
- * 创建人:<BR>
- * 时间:2017年7月10日下午7:15:58<BR>
- * @version
+ * @Author zhujia-zp
+ * @Date 2018/4/5 16:48
+ * 用户映射处理
  */
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/index")
-    public String userLogin(String username,String password){
-
-        return "san_test";
-//        return "index";
-    }
+//    /**
+//     *  用户列表
+//     * @param draw datatables列表访问次数
+//     * @param start 分页开始
+//     * @param length 分页长度
+//     * @return
+//     */
+//    @RequestMapping("/userList")
+//    public @ResponseBody PageHelp userList(int draw,int start,int length){
+//        PageHelp pageHelp = userService.findPageAll(draw,start,length);
+//        return pageHelp;
+//    }
 
     @RequestMapping("/userList")
-    @ResponseBody
-    public String userLogin(){
-        return "HELLO";
+    public @ResponseBody List<User> userList(){
+        return userService.findAll();
     }
 
+    @RequestMapping("/userEdit")
+    public @ResponseBody void userList(int id){
+        System.out.println("id="+id);
+    }
 
 }
