@@ -1,16 +1,15 @@
 <div style="padding: 10px">
     <div>
-        <p class="text-aqua">修改用户页面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <router-link to="/user/userList" class="btn btn-info btn-sm">返回用户列表</router-link>
+        <p class="text-aqua">新增用户页面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#/user/userList" class="btn btn-info btn-sm">返回用户列表</a>
         </p>
     </div>
-
     <form class="form-horizontal" style="margin-top: 10px">
 
         <div class="form-group">
             <label for="username" class="col-xs-1 control-label">用户名</label>
             <div class="col-xs-9">
-                <input type="text" class="form-control" id="username" value="{= username =}" disabled/>
+                <input type="text" class="form-control" id="username" value="{= username =}"/>
             </div>
         </div>
 
@@ -46,11 +45,12 @@
 
     <div class="row">
         <div class="col-xs-1 col-xs-offset-4">
-            <button type="button" on-click="userDelete" class="btn btn-danger">删除</button>
+            <router-link to="/user/userList" class="btn btn-danger">取消</router-link>
         </div>
         <div class="col-xs-1 col-xs-offset-1">
-            <button type="button" on-click="userEdit" class="btn btn-info">修改</button>
+            <button type="button" on-click="userAdd" class="btn btn-info">新增</button>
         </div>
     </div>
+
 </div>
 

@@ -183,8 +183,8 @@ define(function (require) {
         '    </aside>\n' +
         '\n' +
         '\n' +
-        '    <section id="main" class="content-wrapper">\n' +
-        '        123\n' +
+        '    <section class="content-wrapper">\n' +
+        '      <div id="main"></div>' +
         '    </section>',
 
         component: {

@@ -11,7 +11,8 @@ define(function (require) {
     var Link = sanRouter.Link;
     var template = require('text!./userList.html');
 
-    var datatable = $('#tables').DataTable();
+
+    //var res = [];
 
     return san.defineComponent({
         template: template,
@@ -21,10 +22,6 @@ define(function (require) {
         },
 
         initData: function () {
-
-        },
-
-        attached: function () {
             $.getJSON('/user/userList',function (result) {
                 datatable = $("#tables").DataTable({
                     data: result,
@@ -41,35 +38,42 @@ define(function (require) {
                             "last": "尾页"
                         }
                     },
+                    columnDefs: [
+                        {
+                            "defaultContent": "",
+                            "targets": "_all"
+                        }
+                    ],
                     columns: [
                         { data: "id"},
                         { data: "username"},
                         { data: "password"},
                         { data: "name"},
+                        { data: "roleName"},
+                        { data: "phone"},
                         {
                             data: null,
                             orderable: false,
                             searchable: false,
                             render: function (data,type,row) {
-                                var html = '<a href="#/user/userEdit" class="btn btn-primary btn-xs" role="button">修改</a>';
+                                var id = row.id;
+                                var html = '<a href="#/user/userEdit?id='+id+'" class="btn btn-info btn-xs" role="button">修改</a>';
                                 return html;
                             }
                         }
                     ]
                 });
-                //datatables选中行事件
-                // $('#tables tbody').on( 'click', 'tr', function () {
-                //     var data = datatable.row( this).data();
-                //     alert(data.id+"|"+data.username+"|"+data.password+"|"+data.name);
-                // } );
             });
         },
 
+        attached: function () {
 
-    });
-    
-    // function userEdit() {
-    //     alert("userEdit");
-    // }
+        },
 
-})
+    //datatables选中行事件
+    // $('#tables tbody').on( 'click', 'tr', function () {
+    //     var data = datatable.row( this).data();
+    //     alert(data.id+"|"+data.username+"|"+data.password+"|"+data.name);
+    // } );
+    })
+});

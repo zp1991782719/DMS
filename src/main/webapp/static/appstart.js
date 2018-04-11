@@ -168,47 +168,71 @@ define(function (require) {
         '            <!-- sidebar menu: : style can be found in sidebar.less -->\n' +
         '            <ul class="sidebar-menu" data-widget="tree">\n' +
         '                <li class="header">主菜单</li>\n' +
-        '                <li class="active treeview">\n' +
-        '                    <a href="#">\n' +
-        '                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>\n' +
+        '                <li class="treeview" id="userMenu">\n' +
+        '                    <a href="#" on-click="userMenu">\n' +
+        '                        <i class="fa fa-user"></i> <span>用户职工管理</span>\n' +
         '                        <span class="pull-right-container">\n' +
         '                  <i class="fa fa-angle-left pull-right"></i>\n' +
         '                </span>\n' +
         '                    </a>\n' +
-        '                    <ul class="treeview-menu">\n' +
+        '                    <ul class="treeview-menu" id="userTreeMenu">\n' +
         '                        <li><router-link to="/user/userList"><i class="fa fa-circle-o"></i>用户列表</router-link></li>\n' +
-        '                        <li><router-link to="/about"><i class="fa fa-circle-o"></i>about</router-link></li>\n' +
+        '                        <li><router-link to="/send"><i class="fa fa-circle-o"></i>send</router-link></li>\n' +
+        '                        <li><router-link to="/get"><i class="fa fa-circle-o"></i>get</router-link></li>\n' +
         '                    </ul>\n' +
         '                </li>\n' +
-        '                <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>\n' +
-        '                <li class="header">LABELS</li>\n' +
-        '                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>\n' +
-        '                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>\n' +
-        '                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>\n' +
+        '                <li class="treeview" id="drugMenu">\n' +
+        '                    <a href="#" on-click="drugMenu">\n' +
+        '                        <i class="fa fa-plus-circle"></i> <span>药品信息管理</span>\n' +
+        '                        <span class="pull-right-container">\n' +
+        '                  <i class="fa fa-angle-left pull-right"></i>\n' +
+        '                </span>\n' +
+        '                    </a>\n' +
+        '                    <ul class="treeview-menu" id="drugTreeMenu">\n' +
+        '                        <li><router-link to="/drug/drugList"><i class="fa fa-circle-o"></i>药品列表</router-link></li>\n' +
+        '                    </ul>\n' +
+        '                </li>\n' +
         '            </ul>\n' +
         '        </section>\n' +
         '    </aside>\n' +
         '    <section class="content-wrapper">\n' +
-        '            <div id="main">123</div>' +
+        '            <div id="main"></div>' +
         '    </section>\n' +
         '</div>',
 
         components: {
             "router-link": Link
+        },
+
+        userMenu: function () {
+            $("#userTreeMenu").toggle();
+            $("#userMenu").toggleClass("menu-open");
+        },
+        drugMenu: function(){
+            $("#drugTreeMenu").toggle();
+            $("#drugMenu").toggleClass("menu-open");
         }
+
     });
     new App().attach(document.body);
 
     //添加路由
     var userList = require('./page/user/userList');
     var userEdit = require('./page/user/userEdit');
+    var userAdd = require('./page/user/userAdd');
+    var drugList = require('./page/drug/drugList');
+
+
     router.add({rule: '/user/userList', Component: userList, target: '#main'});
     router.add({rule: '/user/userEdit', Component: userEdit, target: '#main'});
+    router.add({rule: '/user/userAdd', Component: userAdd, target: '#main'});
+    router.add({rule: '/drug/drugList', Component: drugList, target: '#main'});
+
 
     // 设置路由模式 'html5 | hash'
     router.setMode('hash');
     // 路由监听
-     router.listen(function(e, config){
+    router.listen(function(e, config){
         // 在路由发生变化时触发
         // console.log(e);
         // console.log(config);

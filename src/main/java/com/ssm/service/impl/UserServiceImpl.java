@@ -4,6 +4,7 @@ import com.ssm.mapper.UserMapper;
 import com.ssm.pojo.User;
 import com.ssm.service.UserService;
 import com.ssm.utils.PageHelp;
+import com.ssm.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,16 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     *  用户id一致的用户
+     * @param id
+     * @return
+     */
+    public User findUserById(int id) {
+        return userMapper.findUserById(id);
+    }
+
+
+    /**
      *
      * @return 所有用户
      */
@@ -52,6 +63,39 @@ public class UserServiceImpl implements UserService {
         pageHelp.setRecordsTotal(userMapper.findAll().size());
         pageHelp.setRecordsFiltered(userMapper.findAll().size());
         return pageHelp;
+    }
+
+    public ResponseResult editUser(User user) {
+        ResponseResult responseResult = new ResponseResult();
+        int num = userMapper.editUser(user);
+        if(num>0){
+            responseResult.setResult("success");
+        }else{
+            responseResult.setResult("error");
+        }
+        return responseResult;
+    }
+
+    public ResponseResult addUser(User user) {
+        ResponseResult responseResult = new ResponseResult();
+        int num = userMapper.addUser(user);
+        if(num>0){
+            responseResult.setResult("success");
+        }else{
+            responseResult.setResult("error");
+        }
+        return responseResult;
+    }
+
+    public ResponseResult deleteUser(int id) {
+        ResponseResult responseResult = new ResponseResult();
+        int num = userMapper.deleteUser(id);
+        if(num>0){
+            responseResult.setResult("success");
+        }else{
+            responseResult.setResult("error");
+        }
+        return responseResult;
     }
 
 

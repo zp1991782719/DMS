@@ -1,6 +1,7 @@
 package com.ssm.pojo;
 
 /**
+ *    用户职工表
  * @Author zhujia-zp
  * @Date 2018/2/24 13:48
  */
@@ -14,6 +15,10 @@ public class User {
 
     private String name;
 
+    private String roleName;
+
+    private String phone;
+
     public User() {
     }
 
@@ -22,6 +27,15 @@ public class User {
         this.username = username;
         this.password = password;
         this.name = name;
+    }
+
+    public User(int id, String username, String password, String name, String roleName, String phone) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.roleName = roleName;
+        this.phone = phone;
     }
 
     public int getId() {
@@ -54,5 +68,33 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", roleName='" + roleName + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

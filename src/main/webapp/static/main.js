@@ -13,6 +13,7 @@ require.config({
         'san-update': 'san-update/src/index',
         'datatables.net': 'DataTables-1.10.15/media/js/jquery.dataTables.min',
         'dataTables-bootstrap': 'DataTables-1.10.15/media/js/dataTables.bootstrap',
+        'sweetalert': 'bootstrap-sweetalert/bootstrap-sweetalert-master/dist/sweetalert.min',
 
         /*这里配置css文件*/
         'bootstrap-css': 'AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min',
@@ -22,6 +23,7 @@ require.config({
         'adminlte-skin-css': 'AdminLTE-2.4.2/dist/css/skins/_all-skins.min',
         'jquery-dataTables-css': 'DataTables-1.10.15/media/css/jquery.dataTables.min',
         'dataTables-bootstrap-css': 'DataTables-1.10.15/media/css/dataTables.bootstrap',
+        'sweetalert-css': 'bootstrap-sweetalert/bootstrap-sweetalert-master/dist/sweetalert',
     },
     map: {
         '*': {
