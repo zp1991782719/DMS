@@ -1,11 +1,14 @@
 package com.ssm.controller;
 
+import com.ssm.pojo.User;
 import com.ssm.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 /**
@@ -22,9 +25,13 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String userLogin(String username,String password){
-
-
-        return "index";
+        List<User> userList = userService.findAll();
+        for(User user: userList){
+            if(user.getUsername().equals(username)&&user.getPassword().equals(password)){
+                return "index";
+            }
+        }
+        return "error";
     }
 
 

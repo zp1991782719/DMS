@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  UserMapper.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.ssm.mapper.ProvideMapper">
+
+    <select id="findAll" resultType="com.ssm.pojo.Provide">
+        select provide_id id,provide_name name,provide_director director,
+               provide_phone phone,provide_email email
+        from dms_provide
+    </select>
+
+    <select id="getProvideById" parameterType="int" resultType="com.ssm.pojo.Provide">
+        select provide_id id,provide_name name,provide_director director,
+        provide_phone phone,provide_email email
+        from dms_provide
+        where provide_id=#{id}
+    </select>
+
+    <update id="editProvide" parameterType="com.ssm.pojo.Provide">
+        update dms_provide set provide_name=#{name}
+            <if test='director!=null'>,provide_director=#{director}</if>
+            <if test='phone!=null'>,provide_phone=#{phone}</if>
+            <if test='email!=null'>,provide_email=#{email}</if>
+        where provide_id=#{id}
+    </update>
+
+    <insert id="addProvide" parameterType="com.ssm.pojo.Provide">
+        insert into dms_provide(provide_id,provide_name
+            <if test='director!=null'>,provide_director</if>
+            <if test='phone!=null'>,provide_phone</if>
+            <if test='email!=null'>,provide_director</if>
+        ) values(null,#{name}
+            <if test='director!=null'>,provide_director=#{director}</if>
+            <if test='phone!=null'>,provide_phone=#{phone}</if>
+            <if test='email!=null'>,provide_email=#{email}</if>
+        )
+    </insert>
+
+    <delete id="deleteProvide" parameterType="int">
+        delete from dms_provide where provide_id=#{id}
+    </delete>
+
+</mapper>

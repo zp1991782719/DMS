@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-3">
+        <div id="tree" class="box box-info" style="margin: 2%"></div>
+    </div>
+    <div class="col-md-9">
+        <div class="box box-info" style="margin-top:2%;margin-right:5%;padding: 5%">
+
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="categoryName" class="col-sm-2 control-label">药品类别</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="categoryName" value="{= categoryName =}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoryIcon" class="col-sm-2 control-label">类别图标</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="categoryIcon" value="{= categoryIcon =}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-3">
+                        <button type="button" on-click="categoryDelete" class="btn btn-danger">删除</button>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-3">
+                        <button type="button" on-click="categoryEdit" class="btn btn-warning">修改</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="box box-info" style="margin-top:2%;margin-right:5%;padding: 5%">
+
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="categoryAddName" class="col-sm-2 control-label">药品类别</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="categoryAddName" value="{= categoryAddName =}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoryAddIcon" class="col-sm-2 control-label">类别图标</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="categoryAddIcon" value="{= categoryAddIcon =}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-6">
+                        <button type="button" on-click="categoryAdd" class="btn btn-info">添加</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

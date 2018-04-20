@@ -14,6 +14,7 @@ require.config({
         'datatables.net': 'DataTables-1.10.15/media/js/jquery.dataTables.min',
         'dataTables-bootstrap': 'DataTables-1.10.15/media/js/dataTables.bootstrap',
         'sweetalert': 'bootstrap-sweetalert/bootstrap-sweetalert-master/dist/sweetalert.min',
+        'bootstrap-treeview': 'AdminLTE-2.4.2/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min',
 
         /*这里配置css文件*/
         'bootstrap-css': 'AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min',
@@ -46,6 +47,10 @@ require.config({
         'dataTables-bootstrap': {
             deps: ['jquery','datatables.net'],
             exports: 'dataTables-bootstrap'
+        },
+        'bootstrap-treeview': {
+            deps: ['jquery'],
+            exports: 'bootstrap-treeview'
         },
 
 

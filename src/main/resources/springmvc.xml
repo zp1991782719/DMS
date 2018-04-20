@@ -27,6 +27,14 @@
         <property name="suffix" value=".html"></property>
     </bean>
 
+    <!-- springMVC上传文件时，需要配置MultipartResolver处理器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize" value="10485760000"></property>
+        <property name="maxInMemorySize" value="40960"></property>
+    </bean>
+
     <!--1： mvc:annotation-driven默认创建了 RequestMappingHandlerMapping和  RequestMappingHandlerAdapter对象
     提供对JSon数据格式的支持-->
     <mvc:annotation-driven />

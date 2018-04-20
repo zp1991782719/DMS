@@ -48,25 +48,14 @@ define(function (require) {
 
             $.getJSON('/user/userAdd',
                 {username:user.username,password:user.password,name:user.name,
-                    roleName:user.roleName,phone:user.phone},function (data) {
-
-                if (data.result=='success') {
+                    roleName:user.roleName,phone:user.phone},function (responseResult) {
                     swal({
-                        title: "新增用户成功",
+                        title: responseResult.msg,
                         text: "2秒后自动关闭。",
                         timer: 2000,
-                        type: "success",
+                        type: responseResult.result,
                         showConfirmButton: false
                     });
-                }else{
-                    swal({
-                        title: "新增用户失败,请联系管理员周大大",
-                        text: "2秒后自动关闭。",
-                        timer: 2000,
-                        type: "success",
-                        showConfirmButton: false
-                    });
-                }
                 $(location).prop('href','#/user/userList')
             });
         }

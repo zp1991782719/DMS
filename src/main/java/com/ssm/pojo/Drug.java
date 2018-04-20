@@ -11,22 +11,24 @@ public class Drug {
 
     private int id;
     private String name;
-    private int catagory_id;
-    private int provide_id;
+    private int categoryId;
+    private int provideId;
     private double price;
     private Date validDate;
+    private String image;
 
     public Drug(){
 
     }
 
-    public Drug(int id, String name, int catagory_id, int provide_id, double price, Date validDate) {
+    public Drug(int id, String name, int categoryId, int provideId, double price, Date validDate, String image) {
         this.id = id;
         this.name = name;
-        this.catagory_id = catagory_id;
-        this.provide_id = provide_id;
+        this.categoryId = categoryId;
+        this.provideId = provideId;
         this.price = price;
         this.validDate = validDate;
+        this.image = image;
     }
 
     public int getId() {
@@ -45,20 +47,20 @@ public class Drug {
         this.name = name;
     }
 
-    public int getCatagory_id() {
-        return catagory_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagory_id(int catagory_id) {
-        this.catagory_id = catagory_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public int getProvide_id() {
-        return provide_id;
+    public int getProvideId() {
+        return provideId;
     }
 
-    public void setProvide_id(int provide_id) {
-        this.provide_id = provide_id;
+    public void setProvideId(int provideId) {
+        this.provideId = provideId;
     }
 
     public double getPrice() {
@@ -77,15 +79,24 @@ public class Drug {
         this.validDate = validDate;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Drug{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", catagory_id=" + catagory_id +
-                ", provide_id=" + provide_id +
+                ", categoryId=" + categoryId +
+                ", provideId=" + provideId +
                 ", price=" + price +
                 ", validDate=" + validDate +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

@@ -67,6 +67,14 @@ public class UserServiceImpl implements UserService {
 
     public ResponseResult editUser(User user) {
         ResponseResult responseResult = new ResponseResult();
+        List<User> userList = userMapper.findAll();
+        for(User u: userList){
+            if(u.getUsername().equals(user.getUsername())){
+                responseResult.setMsg("对不起，该用户已存在");
+                responseResult.setResult("error");
+                return responseResult;
+            }
+        }
         int num = userMapper.editUser(user);
         if(num>0){
             responseResult.setResult("success");
@@ -78,10 +86,21 @@ public class UserServiceImpl implements UserService {
 
     public ResponseResult addUser(User user) {
         ResponseResult responseResult = new ResponseResult();
+        List<User> userList = userMapper.findAll();
+        for(User u: userList){
+            if(u.getUsername().equals(user.getUsername())){
+                responseResult.setMsg("对不起，已存在该用户");
+                responseResult.setResult("error");
+                return responseResult;
+            }
+        }
+
         int num = userMapper.addUser(user);
         if(num>0){
+            responseResult.setMsg("添加用户"+user.getUsername()+"成功");
             responseResult.setResult("success");
         }else{
+            responseResult.setMsg("添加失败，请联系管理员周大大");
             responseResult.setResult("error");
         }
         return responseResult;

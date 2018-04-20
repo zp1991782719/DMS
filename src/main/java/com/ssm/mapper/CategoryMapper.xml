@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  UserMapper.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.ssm.mapper.CategoryMapper">
+
+    <select id="findAll" resultType="com.ssm.pojo.Category">
+        select category_id id,category_name name,category_parent_id parentId,
+               category_icon icon,category_leaf leaf
+        from dms_category
+    </select>
+
+    <select id="getCategoryById" parameterType="int" resultType="com.ssm.pojo.Category">
+        select category_id id,category_name name,category_parent_id parentId,
+        category_icon icon,category_leaf leaf
+        from dms_category where category_id=#{id}
+    </select>
+
+    <select id="getParentCategoryById" parameterType="int" resultType="com.ssm.pojo.Category">
+        select category_id id,category_name name,category_parent_id parentId,
+        category_icon icon,category_leaf leaf
+        from dms_category where category_id=#{parentId}
+    </select>
+
+    <select id="getChildCountCategoryById" parameterType="int" resultType="int">
+        select count(*) from dms_category where category_parent_id=#{parentId}
+    </select>
+
+    <update id="editCategory" parameterType="com.ssm.pojo.Category">
+        update dms_category  set category_name=#{name}
+          <if test='icon!=null and icon!=""'>,category_icon=#{icon}</if>
+          <if test='leaf!=null and leaf!=""'>,category_leaf=#{leaf}</if>
+        where category_id=#{id}
+    </update>
+
+    <delete id="deleteCategory" parameterType="int">
+        delete from dms_category where category_id=#{id}
+    </delete>
+
+    <insert id="addCategory" parameterType="com.ssm.pojo.Category">
+        insert into dms_category(category_id,category_name,category_parent_id
+                <if test='icon!=null and icon!=""'>,category_icon</if>
+        ,category_leaf)
+        values(null,#{name},#{parentId}
+            <if test='icon!=null and icon!=""'>,#{icon}</if>
+                ,#{leaf})
+    </insert>
+
+</mapper>

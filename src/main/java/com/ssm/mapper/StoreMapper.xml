@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  UserMapper.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.ssm.mapper.StoreMapper">
+
+    <select id="findAllStore" resultType="com.ssm.pojo.Store">
+        select store_id id,store_drug_id drugId,store_provide_id provideId,store_count count
+        from dms_store
+    </select>
+
+    <select id="findAll" resultType="com.ssm.service.dto.StoreDto">
+        select a.store_id id,a.store_drug_id drugId,b.drug_name drugName,
+          a.store_provide_id provideId,c.provide_name provideName,a.store_count count
+        from dms_store a
+		 left join dms_drug b on a.store_drug_id=b.drug_id
+			  join dms_provide c on a.store_provide_id = c.provide_id
+    </select>
+
+    <update id="editStore" parameterType="com.ssm.pojo.Store">
+        update dms_store set store_drug_id=#{drugId},
+              store_provide_id=#{provideId},store_count=#{count}
+              where store_id=#{id}
+    </update>
+
+    <insert id="addStore" parameterType="com.ssm.pojo.Store">
+        insert into dms_store(store_id,store_drug_id,store_provide_id,store_count)
+        values(null,#{drugId},#{provideId},#{count})
+    </insert>
+
+</mapper>

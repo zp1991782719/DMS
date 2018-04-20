@@ -33,14 +33,14 @@
 
     <insert id="addUser" parameterType="com.ssm.pojo.User">
         insert into dms_user(user_id,user_username,user_password
-            <if test="name!=null||name!=''">,user_name</if>
-            <if test="roleName!=null||roleName!=''">,user_rolename</if>
-            <if test="phone!=null||phone!=''">,user_phone</if>
+            <if test='name!=null and name!=""'>,user_name</if>
+            <if test='roleName!=null and roleName!=""'>,user_rolename</if>
+            <if test='phone!=null and phone!=""'>,user_phone</if>
         )
         values(null,#{username},#{password}
-            <if test="name!=null||name!=''">,#{name}</if>
-            <if test="roleName!=null||roleName!=''">,#{roleName}</if>
-            <if test="phone!=null||phone!=''">,#{phone}</if>
+            <if test='name!=null and name!=""'>,#{name}</if>
+            <if test='roleName!=null and roleName!=""'>,#{roleName}</if>
+            <if test='phone!=null and phone!=""'>,#{phone}</if>
         )
     </insert>
 

@@ -170,26 +170,48 @@ define(function (require) {
         '                <li class="header">主菜单</li>\n' +
         '                <li class="treeview" id="userMenu">\n' +
         '                    <a href="#" on-click="userMenu">\n' +
-        '                        <i class="fa fa-user"></i> <span>用户职工管理</span>\n' +
+        '                        <i class="fa fa-user"></i> <span>用户职工</span>\n' +
         '                        <span class="pull-right-container">\n' +
         '                  <i class="fa fa-angle-left pull-right"></i>\n' +
         '                </span>\n' +
         '                    </a>\n' +
         '                    <ul class="treeview-menu" id="userTreeMenu">\n' +
         '                        <li><router-link to="/user/userList"><i class="fa fa-circle-o"></i>用户列表</router-link></li>\n' +
-        '                        <li><router-link to="/send"><i class="fa fa-circle-o"></i>send</router-link></li>\n' +
-        '                        <li><router-link to="/get"><i class="fa fa-circle-o"></i>get</router-link></li>\n' +
+        '                        <li><router-link to="/store/storeList"><i class="fa fa-circle-o"></i>库存列表</router-link></li>\n' +
         '                    </ul>\n' +
         '                </li>\n' +
         '                <li class="treeview" id="drugMenu">\n' +
         '                    <a href="#" on-click="drugMenu">\n' +
-        '                        <i class="fa fa-plus-circle"></i> <span>药品信息管理</span>\n' +
+        '                        <i class="fa fa-plus-circle"></i> <span>药品信息</span>\n' +
         '                        <span class="pull-right-container">\n' +
         '                  <i class="fa fa-angle-left pull-right"></i>\n' +
         '                </span>\n' +
         '                    </a>\n' +
         '                    <ul class="treeview-menu" id="drugTreeMenu">\n' +
         '                        <li><router-link to="/drug/drugList"><i class="fa fa-circle-o"></i>药品列表</router-link></li>\n' +
+        '                    </ul>\n' +
+        '                </li>\n' +
+        '                <li class="treeview" id="categoryMenu">\n' +
+        '                    <a href="#" on-click="categoryMenu">\n' +
+        '                        <i class="fa fa-tree"></i> <span>药品类别</span>\n' +
+        '                        <span class="pull-right-container">\n' +
+        '                  <i class="fa fa-angle-left pull-right"></i>\n' +
+        '                </span>\n' +
+        '                    </a>\n' +
+        '                    <ul class="treeview-menu" id="categoryTreeMenu">\n' +
+        '                        <li><router-link to="/category/categoryList"><i class="fa fa-circle-o"></i>类别列表</router-link></li>\n' +
+        '                    </ul>\n' +
+        '                </li>\n' +
+
+        '                <li class="treeview" id="provideMenu">\n' +
+        '                    <a href="#" on-click="provideMenu">\n' +
+        '                        <i class="fa fa-car"></i> <span>供应商</span>\n' +
+        '                        <span class="pull-right-container">\n' +
+        '                  <i class="fa fa-angle-left pull-right"></i>\n' +
+        '                </span>\n' +
+        '                    </a>\n' +
+        '                    <ul class="treeview-menu" id="provideTreeMenu">\n' +
+        '                        <li><router-link to="/provide/provideList"><i class="fa fa-circle-o"></i>供应商列表</router-link></li>\n' +
         '                    </ul>\n' +
         '                </li>\n' +
         '            </ul>\n' +
@@ -211,6 +233,14 @@ define(function (require) {
         drugMenu: function(){
             $("#drugTreeMenu").toggle();
             $("#drugMenu").toggleClass("menu-open");
+        },
+        categoryMenu: function () {
+            $("#categoryTreeMenu").toggle();
+            $("#categoryMenu").toggleClass("menu-open");
+        },
+        provideMenu: function () {
+            $("#provideTreeMenu").toggle();
+            $("#provideMenu").toggleClass("menu-open");
         }
 
     });
@@ -221,13 +251,30 @@ define(function (require) {
     var userEdit = require('./page/user/userEdit');
     var userAdd = require('./page/user/userAdd');
     var drugList = require('./page/drug/drugList');
+    var drugEdit = require('./page/drug/drugEdit');
+    var drugAdd = require('./page/drug/drugAdd');
+    var categoryList = require('./page/category/categoryList');
+    var provideList = require('./page/provide/provideList');
+    var provideEdit = require('./page/provide/provideEdit');
+    var provideAdd = require('./page/provide/provideAdd');
+    var storeList = require('./page/store/storeList');
+    var storeIn = require('./page/store/storeIn');
+    var storeOut = require('./page/store/storeOut');
 
 
     router.add({rule: '/user/userList', Component: userList, target: '#main'});
     router.add({rule: '/user/userEdit', Component: userEdit, target: '#main'});
     router.add({rule: '/user/userAdd', Component: userAdd, target: '#main'});
     router.add({rule: '/drug/drugList', Component: drugList, target: '#main'});
-
+    router.add({rule: '/drug/drugEdit', Component: drugEdit, target: '#main'});
+    router.add({rule: '/drug/drugAdd', Component: drugAdd, target: '#main'});
+    router.add({rule: '/category/categoryList', Component: categoryList, target: '#main'});
+    router.add({rule: '/provide/provideList', Component: provideList, target: '#main'});
+    router.add({rule: '/provide/provideEdit', Component: provideEdit, target: '#main'});
+    router.add({rule: '/provide/provideAdd', Component: provideAdd, target: '#main'});
+    router.add({rule: '/store/storeList', Component: storeList, target: '#main'});
+    router.add({rule: '/store/storeIn', Component: storeIn, target: '#main'});
+    router.add({rule: '/store/storeOut', Component: storeOut, target: '#main'});
 
     // 设置路由模式 'html5 | hash'
     router.setMode('hash');

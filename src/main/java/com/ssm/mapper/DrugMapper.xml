@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  UserMapper.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.ssm.mapper.DrugMapper">
+
+    <select id="findAll" resultType="com.ssm.service.dto.DrugDto">
+        select a.drug_id id,a.drug_name name,a.drug_category_id categoryId,b.category_name categoryName,
+        a.drug_provide_id provideId,c.provide_name provideName,a.drug_price price,a.drug_valid_date validDate,a.drug_image image
+        from dms_drug a
+        left join dms_category b on a.drug_category_id=b.category_id
+             join dms_provide c on a.drug_provide_id=c.provide_id
+    </select>
+
+    <select id="getDrugDtoById" parameterType="int" resultType="com.ssm.service.dto.DrugDto">
+        select a.drug_id id,a.drug_name name,a.drug_category_id categoryId,b.category_name categoryName,
+        a.drug_provide_id provideId,c.provide_name provideName,a.drug_price price,a.drug_valid_date validDate,a.drug_image image
+        from dms_drug a
+        left join dms_category b on a.drug_category_id=b.category_id
+             join dms_provide c on a.drug_provide_id=c.provide_id
+        where a.drug_id=#{id}
+    </select>
+
+    <insert id="addDrug" parameterType="drug">
+        insert into dms_drug(drug_id,drug_name,drug_category_id,drug_provide_id,drug_price,drug_valid_date,drug_image)
+        values(null,#{name},#{categoryId},#{provideId},#{price},#{validDate,jdbcType=DATE},#{image})
+    </insert>
+
+</mapper>

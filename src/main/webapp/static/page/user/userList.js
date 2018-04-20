@@ -11,9 +11,6 @@ define(function (require) {
     var Link = sanRouter.Link;
     var template = require('text!./userList.html');
 
-
-    //var res = [];
-
     return san.defineComponent({
         template: template,
 
@@ -22,8 +19,12 @@ define(function (require) {
         },
 
         initData: function () {
+
+        },
+
+        attached: function () {
             $.getJSON('/user/userList',function (result) {
-                datatable = $("#tables").DataTable({
+                $("#tables").DataTable({
                     data: result,
                     language: {
                         "lengthMenu": "每页 _MENU_ 条记录",
@@ -65,15 +66,5 @@ define(function (require) {
                 });
             });
         },
-
-        attached: function () {
-
-        },
-
-    //datatables选中行事件
-    // $('#tables tbody').on( 'click', 'tr', function () {
-    //     var data = datatable.row( this).data();
-    //     alert(data.id+"|"+data.username+"|"+data.password+"|"+data.name);
-    // } );
     })
 });
