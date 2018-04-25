@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>请登录</title>
-    <!-- 引入requirejs文件管理js依赖包 -->
-    <script src="static/js/require.js" data-main="static/js/lib/main.js"></script>
+
+    <link rel="stylesheet" href="static/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css"/>
 
     <style type="text/css">
         body{
@@ -23,23 +24,9 @@
         .checkbox{padding-left:21px;}
     </style>
 
-    <!-- 新 Bootstrap 核心 CSS 文件
-    <link href="static/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    -->
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-     -->
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件
-    <script src="static/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
-    -->
-    <!-- Font Awesome
-    <link rel="stylesheet" href="/static/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
-    -->
-
 </head>
 <body>
-<div id="testt">my name is bob</div>
-    <form action="/user/userLogin" method="post">
+    <form action="/index" method="post">
         <div class="container">
             <div class="row form" style="margin-left: 50%">
                 <div class="form-horizontal col-md-offset-3" id="login_form">

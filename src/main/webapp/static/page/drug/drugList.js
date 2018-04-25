@@ -70,15 +70,15 @@ define(function (require) {
                                 return html;
                             }
                         },
-                        {data: null,
-                            orderable: false,
-                            searchable: false,
-                            render: function (data,type,row) {
-                                var id = row.id;
-                                var html = '<a href="#/drug/drugEdit?id='+id+'" class="btn btn-info btn-xs" role="button">修改</a>';
-                                return html;
-                            }
-                        }
+                        // {data: null,
+                        //     orderable: false,
+                        //     searchable: false,
+                        //     render: function (data,type,row) {
+                        //         var id = row.id;
+                        //         var html = '<a href="#/drug/drugEdit?id='+id+'" class="btn btn-info btn-xs" role="button">修改</a>';
+                        //         return html;
+                        //     }
+                        // }
                     ]
                 });
             });

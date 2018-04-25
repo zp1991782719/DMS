@@ -5,7 +5,7 @@
 
     <!-- 别名设置 -->
     <typeAliases>
-        <package name="com.ssm.model" />
+        <package name="com.ssm.pojo" />
     </typeAliases>
 
     <!-- mybatis分页插件 -->
